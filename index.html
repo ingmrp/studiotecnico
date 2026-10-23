@@ -3,125 +3,342 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina di Prova - Studio / Test</title>
+    <title>Ing. Mateusz Pietrowski - Ingegneria Civile e Strutturale</title>
     <style>
-        /* CSS: Regole di stile e design della pagina */
         :root {
-            --primary-color: #2c3e50;
-            --accent-color: #3498db;
-            --bg-color: #f8f9fa;
-            --text-color: #333333;
+            --primary-color: #1e293b;   /* Slate scuro per un tono professionale */
+            --accent-color: #2563eb;    /* Blu tecnico */
+            --bg-light: #f8fafc;
+            --text-main: #334155;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg-light);
+            color: var(--text-main);
             line-height: 1.6;
         }
 
+        /* Navigation Bar */
         header {
             background-color: var(--primary-color);
             color: #ffffff;
-            padding: 40px 20px;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #60a5fa;
+            font-weight: 400;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: #ffffff;
+            padding: 5rem 2rem 4rem 2rem;
             text-align: center;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 2.2rem;
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
         }
 
-        header p {
-            margin: 10px 0 0 0;
-            color: #bdc3c7;
+        .hero p.subtitle {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            max-width: 650px;
+            margin: 0 auto 2rem auto;
         }
 
-        main {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background-color: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+        }
+
+        /* Main Content Layout */
+        .container {
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
         }
 
         section {
-            background: #ffffff;
-            padding: 30px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 4rem;
         }
 
-        h2 {
+        h2.section-title {
+            font-size: 1.8rem;
             color: var(--primary-color);
-            margin-top: 0;
-            border-bottom: 2px solid #ecf0f1;
-            padding-bottom: 10px;
+            border-bottom: 3rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
         }
 
-        .btn {
+        h2.section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
             background-color: var(--accent-color);
-            color: white;
+        }
+
+        /* Card Grid per Servizi e Lavori */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .card-meta {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        /* Filtro Dinamico Progetti (JS) */
+        .filter-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-btn {
+            background: #e2e8f0;
             border: none;
-            padding: 12px 24px;
-            font-size: 1rem;
-            border-radius: 4px;
+            padding: 8px 16px;
+            border-radius: 6px;
             cursor: pointer;
-            transition: background 0.2s ease;
+            font-weight: 500;
+            color: var(--text-main);
         }
 
-        .btn:hover {
-            background-color: #2980b9;
+        .filter-btn.active {
+            background: var(--accent-color);
+            color: #ffffff;
         }
 
-        #risultato {
-            margin-top: 15px;
-            font-weight: bold;
-            color: #27ae60;
+        /* Info e Contatti */
+        .info-box {
+            background-color: #eff6ff;
+            border-left: 4px solid var(--accent-color);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
         }
 
         footer {
+            background-color: var(--primary-color);
+            color: #94a3b8;
             text-align: center;
-            padding: 20px;
-            color: #7f8c8d;
+            padding: 2rem;
             font-size: 0.9rem;
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
 
+    <!-- Header Navigation -->
     <header>
-        <h1>Benvenuto nella Pagina di Prova</h1>
-        <p>Struttura di base HTML5, CSS e JavaScript</p>
+        <div class="nav-container">
+            <div class="logo">Ing. Mateusz Pietrowski <span>| Studio Tecnico</span></div>
+            <nav>
+                <a href="#chi-sono">Profilo</a>
+                <a href="#servizi">Prestazioni</a>
+                <a href="#progetti">Progetti</a>
+                <a href="#contatti">Contatti</a>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <section>
-            <h2>Informazioni sul documento</h2>
-            <p>Questa pagina è stata generata per testare il funzionamento locale e la pubblicazione su piattaforme di hosting statico come <strong>GitHub Pages</strong>. </p>
-            <p>ANDIAMO A FATTURAREEEEEEE</p>
-            <p>I fogli di stile (CSS) definiscono l'aspetto visivo, mentre la struttura logica è gestita dai tag semantici dell'HTML.</p>
+    <!-- Hero / Presentazione principale -->
+    <div class="hero">
+        <h1>Ingegneria Strutturale & Diagnostica</h1>
+        <p class="subtitle">Progettazione, modellazione numerica FEM, verifiche sismiche e consulenze tecniche per interventi su strutture in c.a., muratura e legno.</p>
+        <div class="badge-container">
+            <span class="badge">Ordine degli Ingegneri di Genova n. 7587</span>
+            <span class="badge">Rapallo (GE)</span>
+            <span class="badge">NTC 2018 / Eurocodici</span>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- Sezione Chi Sono -->
+        <section id="chi-sono">
+            <h2 class="section-title">Profilo Professionale</h2>
+            <p>Sono un libero professionista specializzato in <strong>ingegneria strutturale</strong> con studio a Rapallo. Opero prevalentemente in Liguria e nelle province limitrofe, offrendo supporto tecnico completo a committenti privati, imprese e studi di architettura.</p>
+            <p>Il metodo di lavoro affianca il rigore dei calcoli analitici ai più avanzati software di modellazione tridimensionale ad elementi finiti (FEM), garantendo soluzioni ottimizzate nel rispetto delle norme vigenti (NTC 2018) e della conservazione del patrimonio edilizio esistente.</p>
         </section>
 
-        <section>
-            <h2>Test di Interattività (JavaScript)</h2>
-            <p>Fai clic sul pulsante sottostante per eseguire una funzione di scripting di prova:</p>
-            <button class="btn" onclick="eseguiTest()">Clicca per testare</button>
-            <div id="risultato"></div>
+        <!-- Sezione Servizi -->
+        <section id="servizi">
+            <h2 class="section-title">Ambito di Attività</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Calcolo e Progettazione Strutturale</h3>
+                    <p>Progettazione di nuove strutture e interventi sull'esistente in cemento armato (C25/30), acciaio (S275), legno lamellare (GL24H) e muratura portante.</p>
+                </div>
+                <div class="card">
+                    <h3>Modellazione FEM & Analisi Sismica</h3>
+                    <p>Analisi di risposta sismica e modellazione tridimensionale ad elementi finiti per la verifica degli Stati Limite Ultimi (SLU) e di Esercizio (SLE).</p>
+                </div>
+                <div class="card">
+                    <h3>Diagnostica & Perizie Tecniche</h3>
+                    <p>Ispezioni non distruttive, indagini termografiche per l'individuazione di elementi strutturali e ponti termici, valutazioni di idoneità statica e due diligence edilizia.</p>
+                </div>
+                <div class="card">
+                    <h3>Pratiche Edilizie & Sicurezza</h3>
+                    <p>Redazione di computi metrici estimativi (CME), pratiche comunali (CILA, SCIA, SUE) e piani di sicurezza (POS, PiMUS).</p>
+                </div>
+            </div>
         </section>
-    </main>
 
+        <!-- Sezione Progetti con Filtro JS -->
+        <section id="progetti">
+            <h2 class="section-title">Esempi di Lavori e Progetti</h2>
+            
+            <div class="filter-bar">
+                <button class="filter-btn active" onclick="filtraProgetti('tutti')">Tutti</button>
+                <button class="filter-btn" onclick="filtraProgetti('esistente')">Edilizia Esistente</button>
+                <button class="filter-btn" onclick="filtraProgetti('geotecnica')">Geotecnica / Muri</button>
+            </div>
+
+            <div class="grid" id="progetti-grid">
+                
+                <div class="card progetto-item esistente">
+                    <div class="card-meta">Muratura / Ristrutturazione</div>
+                    <h3>Ristrutturazione Edificio Storico a 3 Piani</h3>
+                    <p>Progetto strutturale per il consolidamento e la riqualificazione di un fabbricato ad uso residenziale nel territorio ligure (Lorsica), comprensivo di rinforzi murari e adeguamento solai.</p>
+                </div>
+
+                <div class="card progetto-item geotecnica">
+                    <div class="card-meta">Geotecnica / Stabilizzazione</div>
+                    <h3>Stabilizzazione Versante e Reti ad Alta Resistenza</h3>
+                    <p>Verifica di stabilità con analisi all'equilibrio limite (SSAP) e progettazione di opere di contenimento mediante reti metalliche ad alta resistenza (tipo TECCO) e tiranti passivi.</p>
+                </div>
+
+                <div class="card progetto-item esistente">
+                    <div class="card-meta">Interventi Locali / SUE</div>
+                    <h3>Apertura Cerchiatura su Muratura Portante</h3>
+                    <p>Calcolo e verifica di telaio in carpenteria metallica (acciaio S275) per l'ampliamento di un varco murario garantendo il ripristino della rigidezza di piano.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Sezione Contatti -->
+        <section id="contatti">
+            <h2 class="section-title">Contatti & Studio</h2>
+            <div class="info-box">
+                <p><strong>Studio Tecnico di Ingegneria Civile e Strutturale</strong></p>
+                <p>📍 Via Magenta, Rapallo (GE) – Liguria</p>
+                <p>✉️ Email: <a href="mailto:mateuszrobert.pietrowski@ingpec.eu">mateuszrobert.pietrowski@ingpec.eu</a></p>
+                <p>📋 Iscrizione Ordine degli Ingegneri della Provincia di Genova n. 7587</p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 - Pagina di test creata per scopi dimostrativi.</p>
+        <p>&copy; 2026 Ing. Mateusz Pietrowski | P.IVA in Regime Forfettario | Tutti i diritti riservati</p>
     </footer>
 
+    <!-- JavaScript per la gestione dei filtri dei progetti -->
     <script>
-        /* JavaScript: Logica dinamica e interazione */
-        function eseguiTest() {
-            const boxRisultato = document.getElementById("risultato");
-            const oraCorrente = new Date().toLocaleTimeString();
-            boxRisultato.textContent = `Script eseguito con successo alle ore ${oraCorrente}!`;
+        function filtraProgetti(categoria) {
+            const elementi = document.querySelectorAll('.progetto-item');
+            const bottoni = document.querySelectorAll('.filter-btn');
+
+            // Gestione stato attivo dei bottoni
+            bottoni.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Filtraggio schede
+            elementi.forEach(item => {
+                if (categoria === 'tutti' || item.classList.contains(categoria)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
         }
     </script>
 
