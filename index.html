@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina di Prova - Studio / Test</title>
+    <style>
+        /* CSS: Regole di stile e design della pagina */
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f8f9fa;
+            --text-color: #333333;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+        }
+
+        header p {
+            margin: 10px 0 0 0;
+            color: #bdc3c7;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            background: #ffffff;
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 10px;
+        }
+
+        .btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        #risultato {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Benvenuto nella Pagina di Prova</h1>
+        <p>Struttura di base HTML5, CSS e JavaScript</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Informazioni sul documento</h2>
+            <p>Questa pagina è stata generata per testare il funzionamento locale e la pubblicazione su piattaforme di hosting statico come <strong>GitHub Pages</strong>.</p>
+            <p>I fogli di stile (CSS) definiscono l'aspetto visivo, mentre la struttura logica è gestita dai tag semantici dell'HTML.</p>
+        </section>
+
+        <section>
+            <h2>Test di Interattività (JavaScript)</h2>
+            <p>Fai clic sul pulsante sottostante per eseguire una funzione di scripting di prova:</p>
+            <button class="btn" onclick="eseguiTest()">Clicca per testare</button>
+            <div id="risultato"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Pagina di test creata per scopi dimostrativi.</p>
+    </footer>
+
+    <script>
+        /* JavaScript: Logica dinamica e interazione */
+        function eseguiTest() {
+            const boxRisultato = document.getElementById("risultato");
+            const oraCorrente = new Date().toLocaleTimeString();
+            boxRisultato.textContent = `Script eseguito con successo alle ore ${oraCorrente}!`;
+        }
+    </script>
+
+</body>
+</html>
