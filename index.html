@@ -214,6 +214,33 @@
           height: 14px;
           fill: #ffffff;
         }
+
+
+        .btn-maps-inline {
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          background-color: #4285F4; /* Blu ufficiale Google */
+          color: #ffffff !important;
+          padding: 3px 10px;
+          font-size: 13px;
+          font-weight: 600;
+          text-decoration: none;
+          border-radius: 4px;
+          margin-left: 8px;
+          vertical-align: middle;
+          transition: background-color 0.2s ease;
+        }
+        
+        .btn-maps-inline:hover {
+          background-color: #3367d6;
+        }
+        
+        .btn-maps-inline svg {
+          width: 14px;
+          height: 14px;
+          fill: #ffffff;
+        }
         
         /* Info e Contatti */
         .info-box {
@@ -333,12 +360,20 @@
             </div>
         </section>
 
-<!-- Sezione Contatti -->
+<!-- Sezione Contatti --><!-- Sezione Contatti -->
         <section id="contatti">
             <h2 class="section-title">Contatti & Studio</h2>
             <div class="info-box">
                 <p><strong>Studio Tecnico di Ingegneria Civile e Strutturale</strong></p>
-                <p>📍 Sede Principale: Via Magenta 38/1, Rapallo (GE) – Liguria</p>
+                <p>
+                  📍 Sede Principale: Via Magenta 38/1, Rapallo (GE) – Liguria
+                  <a href="https://maps.google.com/?q=Via+Magenta+38/1,+Rapallo+(GE)" class="btn-maps-inline" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    <span>Apri in Maps</span>
+                  </a>
+                </p>
                 <p>
                   ☎️ Cellulare: <a href="tel:+393793960922">+39 379 396 0922</a> 
                   <a href="https://wa.me/393793960922" class="btn-whatsapp-inline" target="_blank" rel="noopener noreferrer">
