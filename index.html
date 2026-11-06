@@ -14,6 +14,31 @@
             --border-color: #e2e8f0;
         }
 
+
+        /* Selettore Lingua */
+        .lang-selector {
+            display: flex;
+            gap: 6px;
+            margin-left: 1.5rem;
+        }
+        
+        .lang-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #cbd5e1;
+            padding: 2px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .lang-btn:hover, .lang-btn.active {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            border-color: var(--accent-color);
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
             margin: 0;
@@ -268,17 +293,23 @@
 <body>
 
     <!-- Header Navigation -->
-    <header>
-        <div class="nav-container">
-            <div class="logo">Ing. Mateusz Pietrowski <span>| Studio Tecnico</span></div>
-            <nav>
-                <a href="#chi-sono">Profilo</a>
-                <a href="#servizi">Prestazioni</a>
-                <a href="#progetti">Progetti</a>
-                <a href="#contatti">Contatti</a>
-            </nav>
-        </div>
-    </header>
+<header>
+    <div class="nav-container">
+        <div class="logo">Ing. Mateusz Pietrowski <span>| Studio Tecnico</span></div>
+        <nav style="display: flex; align-items: center;">
+            <a href="#chi-sono" data-i18n="nav_profilo">Profilo</a>
+            <a href="#servizi" data-i18n="nav_prestazioni">Prestazioni</a>
+            <a href="#progetti" data-i18n="nav_progetti">Progetti</a>
+            <a href="#contatti" data-i18n="nav_contatti">Contatti</a>
+            
+            <div class="lang-selector">
+                <button class="lang-btn active" onclick="cambiaLingua('it')">IT</button>
+                <button class="lang-btn" onclick="cambiaLingua('en')">EN</button>
+                <button class="lang-btn" onclick="cambiaLingua('pl')">PL</button>
+            </div>
+        </nav>
+    </div>
+</header>
 
     <!-- Hero / Presentazione principale -->
     <div class="hero">
@@ -415,6 +446,145 @@
                 }
             });
         }
+
+        const dizionario = {
+        it: {
+            banner: "SITO IN COSTRUZIONE - ANTEPRIMA",
+            hero_title: "Ingegneria Strutturale & Diagnostica",
+            hero_subtitle: "Progettazione, modellazione numerica FEM, verifiche sismiche e consulenze tecniche per interventi su strutture in c.a., muratura e legno.",
+            nav_profilo: "Profilo",
+            nav_prestazioni: "Prestazioni",
+            nav_progetti: "Progetti",
+            nav_contatti: "Contatti",
+            sec_profilo: "Profilo Professionale",
+            p_profilo_1: "Sono un libero professionista specializzato in ingegneria strutturale con studio a Rapallo. Opero prevalentemente in Liguria e nelle province limitrofe, offrendo supporto tecnico completo a committenti privati, imprese e studi di architettura.",
+            p_profilo_2: "Il metodo di lavoro affianca il rigore dei calcoli analitici ai più avanzati software di modellazione tridimensionale ad elementi finiti (FEM), garantendo soluzioni ottimizzate nel rispetto delle norme vigenti (NTC 2018) e della conservazione del patrimonio edilizio esistente.",
+            sec_servizi: "Ambito di Attività",
+            srv1_title: "Calcolo e Progettazione Strutturale",
+            srv1_desc: "Progettazione di nuove strutture e interventi sull'esistente in cemento armato (C25/30), acciaio (S275), legno lamellare (GL24H) e muratura portante.",
+            srv2_title: "Modellazione FEM & Analisi Sismica",
+            srv2_desc: "Analisi di risposta sismica e modellazione tridimensionale ad elementi finiti per la verifica degli Stati Limite Ultimi (SLU) e di Esercizio (SLE).",
+            srv3_title: "Diagnostica & Perizie Tecniche",
+            srv3_desc: "Ispezioni non distruttive, indagini termografiche per l'individuazione di elementi strutturali e ponti termici, valutazioni di idoneità statica e due diligence edilizia.",
+            srv4_title: "Pratiche Edilizie & Sicurezza",
+            srv4_desc: "Redazione di computi metrici estimativi (CME), pratiche comunali (CILA, SCIA, SUE) e piani di sicurezza (POS, PiMUS).",
+            sec_progetti: "Esempi di Lavori e Progetti",
+            btn_tutti: "Tutti",
+            btn_esistente: "Edilizia Esistente",
+            btn_geotecnica: "Geotecnica / Muri",
+            prj1_meta: "Muratura / Ristrutturazione",
+            prj1_title: "Ristrutturazione Edificio Storico a 3 Piani",
+            prj1_desc: "Progetto strutturale per il consolidamento e la riqualificazione di un fabbricato ad uso residenziale nel territorio ligure (Lorsica), comprensivo di rinforzi murari e adeguamento solai.",
+            prj2_meta: "Geotecnica / Stabilizzazione",
+            prj2_title: "Stabilizzazione Versante e Reti ad Alta Resistenza",
+            prj2_desc: "Verifica di stabilità con analisi all'equilibrio limite (SSAP) e progettazione di opere di contenimento mediante reti metalliche ad alta resistenza (tipo TECCO) e tiranti passivi.",
+            prj3_meta: "Interventi Locali / SUE",
+            prj3_title: "Apertura Cerchiatura su Muratura Portante",
+            prj3_desc: "Calcolo e verifica di telaio in carpenteria metallica (acciaio S275) per l'ampliamento di un varco murario garantendo il ripristino della rigidezza di piano.",
+            sec_contatti: "Contatti & Studio",
+            studio_title: "Studio Tecnico di Ingegneria Civile e Strutturale",
+            sede: "📍 Sede Principale: Via Magenta 38/1, Rapallo (GE) – Liguria"
+        },
+        en: {
+            banner: "WEBSITE UNDER CONSTRUCTION - PREVIEW",
+            hero_title: "Structural Engineering & Diagnostics",
+            hero_subtitle: "Structural design, FEM numerical modeling, seismic verification, and technical consulting for reinforced concrete, masonry, and timber structures.",
+            nav_profilo: "Profile",
+            nav_prestazioni: "Services",
+            nav_progetti: "Projects",
+            nav_contatti: "Contact",
+            sec_profilo: "Professional Profile",
+            p_profilo_1: "Independent structural engineer based in Rapallo, Liguria. Operating primarily across Northern Italy, providing comprehensive technical support to private clients, contractors, and architectural firms.",
+            p_profilo_2: "The methodology integrates analytical mechanics with finite element method (FEM) 3D modeling, delivering structural solutions compliant with current design codes (NTC 2018 / Eurocodes) and existing building conservation criteria.",
+            sec_servizi: "Services & Expertise",
+            srv1_title: "Structural Design & Calculations",
+            srv1_desc: "Structural design for new buildings and interventions on existing structures using reinforced concrete (C25/30), structural steel (S275), glulam timber (GL24H), and load-bearing masonry.",
+            srv2_title: "FEM Modeling & Seismic Analysis",
+            srv2_desc: "Seismic assessment and 3D finite element numerical modeling for Ultimate Limit State (ULS) and Serviceability Limit State (SLS) verifications.",
+            srv3_title: "Diagnostics & Engineering Inspections",
+            srv3_desc: "Non-destructive testing, infrared thermographic surveys for structural elements and thermal bridges, structural stability evaluations, and technical due diligence.",
+            srv4_title: "Permitting & Site Safety",
+            srv4_desc: "Bill of quantities (CME), municipal building permits (CILA, SCIA, SUE), and construction site safety plans (POS, PiMUS).",
+            sec_progetti: "Selected Projects",
+            btn_tutti: "All",
+            btn_esistente: "Existing Buildings",
+            btn_geotecnica: "Geotechnical / Retaining",
+            prj1_meta: "Masonry / Renovation",
+            prj1_title: "3-Story Historic Building Renovation",
+            prj1_desc: "Structural engineering for seismic retrofitting and rehabilitation of a residential masonry building in Lorsica (Liguria), including wall reinforcement and floor diaphragm stiffening.",
+            prj2_meta: "Geotechnics / Slope Stabilization",
+            prj2_title: "Slope Stabilization & High-Tensile Mesh",
+            prj2_desc: "Limit equilibrium slope stability analysis (SSAP) and design of rockfall protection systems using high-tensile steel wire mesh (TECCO type) and passive ground anchors.",
+            prj3_meta: "Local Interventions / Steel Frames",
+            prj3_title: "Steel Wall Framing in Load-Bearing Masonry",
+            prj3_desc: "Calculation and structural verification of a structural steel frame (S275) for wall opening enlargement while preserving original in-plane shear stiffness.",
+            sec_contatti: "Contact & Location",
+            studio_title: "Civil & Structural Engineering Office",
+            sede: "📍 Main Office: Via Magenta 38/1, Rapallo (GE) – Liguria, Italy"
+        },
+        pl: {
+            banner: "STRONA W BUDOWIE - PODGLĄD",
+            hero_title: "Inżynieria Konstrukcyjna i Diagnostyka",
+            hero_subtitle: "Projektowanie konstrukcji, modelowanie numeryczne MES (FEM), analizy sejsmiczne i ekspertyzy techniczne dla obiektów z żelbetu, muru i drewna.",
+            nav_profilo: "Profil",
+            nav_prestazioni: "Zakres usług",
+            nav_progetti: "Projekty",
+            nav_contatti: "Kontakt",
+            sec_profilo: "Profil Zawodowy",
+            p_profilo_1: "Niezależny inżynier budownictwa ze specjalizacją konstrukcyjną z siedzibą w Rapallo (Liguria). Świadczę kompleksowe usługi inżynieryjne dla inwestorów prywatnych, firm wykonawczych i pracowni architektonicznych.",
+            p_profilo_2: "Metodologia pracy łączy ścisłe obliczenia analityczne z zaawansowanym modelowaniem przestrzennym metodą elementów skończonych (MES), zapewniając optymalizację konstrukcji zgodnie z normami (NTC 2018 / Eurokody).",
+            sec_servizi: "Zakres Działalności",
+            srv1_title: "Projektowanie i Obliczenia Konstrukcyjne",
+            srv1_desc: "Projektowanie nowych obiektów i przebudów w technologii żelbetowej (C25/30), stalowej (S275), drewna klejonego (GL24H) i muru nośnego.",
+            srv2_title: "Modelowanie MES i Analiza Sejsmiczna",
+            srv2_desc: "Analiza odpowiedzi sejsmicznej i modelowanie numeryczne 3D pod kątem Stanów Granicznych Nośności (SGN) i Użytkowalności (SGU).",
+            srv3_title: "Diagnostyka i Ekspertyzy Techniczne",
+            srv3_desc: "Nieniszczące badania diagnostyczne, pomiary termowizyjne elementów konstrukcyjnych i mostków cieplnych, ocena stanu technicznego i zebranie danych do due diligence.",
+            srv4_title: "Dokumentacja Budowlana i BHP",
+            srv4_desc: "Sporządzanie kosztorysów inwestorskich (CME), procedury formalno-prawne (CILA, SCIA, SUE) oraz plany bezpieczeństwa (POS, PiMUS).",
+            sec_progetti: "Przykładowe Realizacje",
+            btn_tutti: "Wszystkie",
+            btn_esistente: "Budynki Istniejące",
+            btn_geotecnica: "Geotechnika / Murki",
+            prj1_meta: "Konstrukcje Murowe / Remont",
+            prj1_title: "Modernizacja 3-Kondygnacyjnego Budynku Zabytkowego",
+            prj1_desc: "Projekt konstrukcyjny wzmocnienia i przebudowy budynku mieszkalnego w Lorsice (Liguria), obejmujący wzmocnienia ścian murowanych i usztywnienie stropów.",
+            prj2_meta: "Geotechnika / Stabilizacja",
+            prj2_title: "Zabezpieczenie Zbocza i Sieci o Wysokiej Wytrzymałości",
+            prj2_desc: "Analiza stateczności zbocza metodą stanów granicznych (SSAP) oraz projekt zabezpieczeń z użyciem siatek stalowych o wysokiej wytrzymałości (typu TECCO) i kotew pasywnych.",
+            prj3_meta: "Interwencje Lokalne / Ramy Stalowe",
+            prj3_title: "Stalowa Rama Wzmocnienia Otworu w Ścianie Nośnej",
+            prj3_desc: "Obliczenia i weryfikacja ramy stalowej (stal S275) dla poszerzenia otworu drzwiowego/okiennego z zachowaniem pierwotnej sztywności tarczy ściennej.",
+            sec_contatti: "Kontakt i Biuro",
+            studio_title: "Biuro Inżynierii Cywilnej i Konstrukcyjnej",
+            sede: "📍 Główne Biuro: Via Magenta 38/1, Rapallo (GE) – Liguria, Włochy"
+        }
+    };
+    
+    function cambiaLingua(lang) {
+        // 1. Aktualizacja atrybutu lang w kodzie HTML
+        document.documentElement.lang = lang;
+    
+        // 2. Podmiana tekstów na podstawie data-i18n
+        const elementi = document.querySelectorAll('[data-i18n]');
+        elementi.forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (dizionario[lang] && dizionario[lang][key]) {
+                el.textContent = dizionario[lang][key];
+            }
+        });
+    
+        // 3. Aktualizacja stanu aktywnego przycisków
+        const bottoni = document.querySelectorAll('.lang-btn');
+        bottoni.forEach(btn => {
+            if (btn.textContent.toLowerCase() === lang) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+    }
+            
     </script>
 
 </body>
