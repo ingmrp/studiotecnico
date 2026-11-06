@@ -13,7 +13,62 @@
             --card-bg: #ffffff;
             --border-color: #e2e8f0;
         }
-
+        /* Pulsante Hamburger (nascosto su desktop) */
+    .menu-toggle {
+        display: none;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
+    }
+    
+    .menu-toggle svg {
+        width: 24px;
+        height: 24px;
+        fill: #ffffff;
+    }
+    
+    /* Media Query per dispositivi mobili (schermi inferiori a 768px) */
+    @media (max-width: 768px) {
+        .nav-container {
+            flex-wrap: wrap;
+        }
+    
+        /* Mostra il pulsante hamburger */
+        .menu-toggle {
+            display: block;
+        }
+    
+        /* Nascondi di default i link e il selettore bandiere su mobile */
+        nav {
+            display: none;
+            width: 100%;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 1rem;
+        }
+    
+        /* Quando il menu viene aperto tramite JS */
+        nav.open {
+            display: flex;
+        }
+    
+        nav a {
+            margin: 0.5rem 0;
+            margin-left: 0;
+            font-size: 1.1rem;
+        }
+    
+        .lang-selector {
+            margin-left: 0;
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+        }
+    }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
             margin: 0;
@@ -305,48 +360,53 @@
 
     <!-- Header Navigation -->
     <header>
-        <div class="nav-container">
-            <div class="logo">Ing. Mateusz Pietrowski <span>| Studio Tecnico</span></div>
-            <nav style="display: flex; align-items: center;">
-                <a href="#chi-sono" data-i18n="nav_profilo">Profilo</a>
-                <a href="#servizi" data-i18n="nav_prestazioni">Prestazioni</a>
-                <a href="#progetti" data-i18n="nav_progetti">Progetti</a>
-                <a href="#contatti" data-i18n="nav_contatti">Contatti</a>
-                
-                <div class="lang-selector">
-                    <!-- Bandiera Italiana -->
-                    <button class="lang-btn active" onclick="cambiaLingua('it')" title="Italiano">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3 2">
-                            <rect width="1" height="2" fill="#009246"/>
-                            <rect x="1" width="1" height="2" fill="#ffffff"/>
-                            <rect x="2" width="1" height="2" fill="#ce2b37"/>
-                        </svg>
-                    </button>
-                    <!-- Bandiera Inglese (UK) -->
-                    <button class="lang-btn" onclick="cambiaLingua('en')" title="English">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30">
-                            <clipPath id="t"><path d="M0,0 v30 h60 v-30 z"/></clipPath>
-                            <clipPath id="s"><path d="M30,15 h30 v15 z v-15 h-30 z h-30 v-15 z v15 h30 z"/></clipPath>
-                            <g clip-path="url(#t)">
-                                <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
-                                <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
-                                <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#s)" stroke="#C8102E" stroke-width="4"/>
-                                <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
-                                <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
-                            </g>
-                        </svg>
-                    </button>
-                    <!-- Bandiera Polacca -->
-                    <button class="lang-btn" onclick="cambiaLingua('pl')" title="Polski">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 10">
-                            <rect width="16" height="5" fill="#ffffff"/>
-                            <rect y="5" width="16" height="5" fill="#dc143c"/>
-                        </svg>
-                    </button>
-                </div>
-            </nav>
-        </div>
-    </header>
+    <div class="nav-container">
+        <div class="logo">Ing. Mateusz Pietrowski <span>| Studio Tecnico</span></div>
+        
+        <!-- Pulsante Hamburger per smartphone -->
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+            </svg>
+        </button>
+
+        <nav id="main-nav">
+            <a href="#chi-sono" data-i18n="nav_profilo" onclick="chiudiMenuMobile()">Profilo</a>
+            <a href="#servizi" data-i18n="nav_prestazioni" onclick="chiudiMenuMobile()">Prestazioni</a>
+            <a href="#progetti" data-i18n="nav_progetti" onclick="chiudiMenuMobile()">Progetti</a>
+            <a href="#contatti" data-i18n="nav_contatti" onclick="chiudiMenuMobile()">Contatti</a>
+            
+            <div class="lang-selector">
+                <button class="lang-btn active" onclick="cambiaLingua('it')" title="Italiano">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3 2">
+                        <rect width="1" height="2" fill="#009246"/>
+                        <rect x="1" width="1" height="2" fill="#ffffff"/>
+                        <rect x="2" width="1" height="2" fill="#ce2b37"/>
+                    </svg>
+                </button>
+                <button class="lang-btn" onclick="cambiaLingua('en')" title="English">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30">
+                        <clipPath id="t"><path d="M0,0 v30 h60 v-30 z"/></clipPath>
+                        <clipPath id="s"><path d="M30,15 h30 v15 z v-15 h-30 z h-30 v-15 z v15 h30 z"/></clipPath>
+                        <g clip-path="url(#t)">
+                            <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
+                            <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+                            <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#s)" stroke="#C8102E" stroke-width="4"/>
+                            <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+                            <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+                        </g>
+                    </svg>
+                </button>
+                <button class="lang-btn" onclick="cambiaLingua('pl')" title="Polski">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 10">
+                        <rect width="16" height="5" fill="#ffffff"/>
+                        <rect y="5" width="16" height="5" fill="#dc143c"/>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+    </div>
+</header>
 
     <!-- Hero / Presentazione principale -->
     <div class="hero">
@@ -617,6 +677,15 @@
                 }
             });
         }
+            function toggleMenu() {
+        const nav = document.getElementById('main-nav');
+        nav.classList.toggle('open');
+    }
+    
+    function chiudiMenuMobile() {
+        const nav = document.getElementById('main-nav');
+        nav.classList.remove('open');
+    }
     </script>
 </body>
 </html>
