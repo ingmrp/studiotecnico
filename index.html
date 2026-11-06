@@ -65,29 +65,42 @@
             color: #ffffff;
         }
 
-        /* Selettore Lingua */
+        /* Selettore Lingua con Bandiere (SVG inline) */
         .lang-selector {
             display: flex;
-            gap: 6px;
+            gap: 8px;
             margin-left: 1.5rem;
+            align-items: center;
         }
 
         .lang-btn {
             background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: #cbd5e1;
-            padding: 2px 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 4px 6px;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 0.8rem;
-            font-weight: 600;
+            display: flex;
+            align-items: center;
             transition: all 0.2s ease;
+            opacity: 0.6;
         }
 
-        .lang-btn:hover, .lang-btn.active {
-            background-color: var(--accent-color);
-            color: #ffffff;
+        .lang-btn:hover {
+            opacity: 0.9;
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .lang-btn.active {
+            opacity: 1;
+            background-color: rgba(37, 99, 235, 0.3);
             border-color: var(--accent-color);
+        }
+
+        .lang-btn svg {
+            width: 20px;
+            height: 14px;
+            border-radius: 2px;
+            display: block;
         }
 
         /* Hero Section */
@@ -301,9 +314,35 @@
                 <a href="#contatti" data-i18n="nav_contatti">Contatti</a>
                 
                 <div class="lang-selector">
-                    <button class="lang-btn active" onclick="cambiaLingua('it')">IT</button>
-                    <button class="lang-btn" onclick="cambiaLingua('en')">EN</button>
-                    <button class="lang-btn" onclick="cambiaLingua('pl')">PL</button>
+                    <!-- Bandiera Italiana -->
+                    <button class="lang-btn active" onclick="cambiaLingua('it')" title="Italiano">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3 2">
+                            <rect width="1" height="2" fill="#009246"/>
+                            <rect x="1" width="1" height="2" fill="#ffffff"/>
+                            <rect x="2" width="1" height="2" fill="#ce2b37"/>
+                        </svg>
+                    </button>
+                    <!-- Bandiera Inglese (UK) -->
+                    <button class="lang-btn" onclick="cambiaLingua('en')" title="English">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30">
+                            <clipPath id="t"><path d="M0,0 v30 h60 v-30 z"/></clipPath>
+                            <clipPath id="s"><path d="M30,15 h30 v15 z v-15 h-30 z h-30 v-15 z v15 h30 z"/></clipPath>
+                            <g clip-path="url(#t)">
+                                <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
+                                <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+                                <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#s)" stroke="#C8102E" stroke-width="4"/>
+                                <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+                                <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+                            </g>
+                        </svg>
+                    </button>
+                    <!-- Bandiera Polacca -->
+                    <button class="lang-btn" onclick="cambiaLingua('pl')" title="Polski">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 10">
+                            <rect width="16" height="5" fill="#ffffff"/>
+                            <rect y="5" width="16" height="5" fill="#dc143c"/>
+                        </svg>
+                    </button>
                 </div>
             </nav>
         </div>
@@ -552,7 +591,8 @@
 
             const bottoni = document.querySelectorAll('.lang-btn');
             bottoni.forEach(btn => {
-                if (btn.textContent.toLowerCase() === lang) {
+                // Controlla quale lingua è associata al bottone tramite l'attributo onclick
+                if (btn.getAttribute('onclick').includes(`'${lang}'`)) {
                     btn.classList.add('active');
                 } else {
                     btn.classList.remove('active');
@@ -578,5 +618,7 @@
             });
         }
     </script>
+</body>
+</html>
 </body>
 </html>
